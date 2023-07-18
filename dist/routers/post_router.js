@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const post_controller_1 = require("../controllers/post_controller");
+const uplaod_image_middleware_1 = require("../middleware/uplaod_image_middleware");
+const router = (0, express_1.Router)();
+router.post("/", uplaod_image_middleware_1.upload.single("image"), post_controller_1.createNewBlogPost);
+router.get("/", post_controller_1.getAllBlogPosts);
+router.get("/:id", post_controller_1.getOneBlogPost);
+router.put("/:id", post_controller_1.upDateBlogPost);
+router.delete("/:id", post_controller_1.deleteBlogPost);
+exports.default = router;
